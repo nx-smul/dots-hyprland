@@ -1,1 +1,74 @@
-/home/simp/.cache/wal/colors-rofi-dark.rasi
+* {
+
+    background: #141218;
+    onBackground: #E6E1E9;
+    surface: #141218;
+    surfaceDim: #141218;
+    surfaceBright: #3B383E;
+    surfaceContainerLowest: #0F0D13;
+    surfaceContainerLow: #1D1B20;
+    surfaceContainer: #211F24;
+    surfaceContainerHigh: #2B292F;
+    surfaceContainerHighest: #36343A;
+    onSurface: #E6E1E9;
+    surfaceVariant: #49454E;
+    onSurfaceVariant: #CAC4CF;
+    inverseSurface: #E6E1E9;
+    inverseOnSurface: #322F35;
+    outline: #948F99;
+    outlineVariant: #49454E;
+    shadow: #000000;
+    scrim: #000000;
+    surfaceTint: #CFBDFE;
+    primary: #CFBDFE;
+    onPrimary: #35275D;
+    primaryContainer: #4C3E75;
+    onPrimaryContainer: #E8DDFF;
+    inversePrimary: #64558F;
+    secondary: #CBC2DC;
+    onSecondary: #332D41;
+    secondaryContainer: #4C465A;
+    onSecondaryContainer: #E9E0FA;
+    tertiary: #EFB8C8;
+    onTertiary: #492532;
+    tertiaryContainer: #B58393;
+    onTertiaryContainer: #000000;
+    error: #FFB4AB;
+    onError: #690005;
+    errorContainer: #93000A;
+    onErrorContainer: #FFDAD6;
+    primaryFixed: #E8DDFF;
+    primaryFixedDim: #CFBDFE;
+    onPrimaryFixed: #201047;
+    onPrimaryFixedVariant: #4C3E75;
+    secondaryFixed: #E8DEF8;
+    secondaryFixedDim: #CBC2DC;
+    onSecondaryFixed: #1E192B;
+    onSecondaryFixedVariant: #494458;
+    tertiaryFixed: #FFD9E3;
+    tertiaryFixedDim: #EFB8C8;
+    onTertiaryFixed: #31101D;
+    onTertiaryFixedVariant: #633B49;
+    success: #B5CCBA;
+    onSuccess: #213528;
+    successContainer: #374B3E;
+    onSuccessContainer: #D1E9D6;
+    term0: #1C1A20;
+    term1: #C465FF;
+    term2: #FFBAC2;
+    term3: #FFDCF3;
+    term4: #A1A7D8;
+    term5: #C09BE5;
+    term6: #9DCEFF;
+    term7: #E8D3DE;
+    term8: #C3B5C0;
+    term9: #E2ACFF;
+    term10: #FFFCFF;
+    term11: #FFFFFF;
+    term12: #D4DBF9;
+    term13: #EBCFFF;
+    term14: #F8FAFF;
+    term15: #E6DFFC;
+
+
+}
