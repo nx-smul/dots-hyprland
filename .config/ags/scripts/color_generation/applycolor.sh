@@ -126,8 +126,10 @@ apply_lightdark() {
 	lightdark=$(get_light_dark)
 	if [ "$lightdark" = "light" ]; then
 		gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+		plasma-apply-colorscheme MaterialYouLight
 	else
 		gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+		plasma-apply-colorscheme MaterialYouDark
 	fi
 }
 
