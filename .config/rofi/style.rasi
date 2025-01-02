@@ -42,7 +42,7 @@ window {
     border:                      0px solid;
     border-radius:               12px;
     border-color:                @secondary;
-    background-color:            @term0;
+    background-color:            @background;
     cursor:                      "default";
     border: 2px;
     border-color:                @onSecondary;
@@ -71,7 +71,7 @@ inputbar {
     border-radius:               12px;
     border-color:                @onSecondary;
     background-color:            @secondaryContainer;
-    text-color:                  @onBackground;
+    text-color:                  @secondary;
     children:                    [ "prompt", "entry" ];
 }
 
@@ -144,8 +144,8 @@ element normal.normal {
     text-color:                  @onBackground;
 }
 element selected.normal {
-    background-color:            @primaryContainer;
-    text-color:                  @onBackground;
+    background-color:            @primary;
+    text-color:                  @onPrimary;
 }
 element-icon {
     background-color:            transparent;
@@ -169,7 +169,7 @@ error-message {
     border-radius:               12px;
     border-color:                @onErrorContainer;
     background-color:            @onError;
-    text-color:                  @onBackground;
+    text-color:                  @error;
 }
 textbox {
     background-color:            @onPrimary;
