@@ -170,11 +170,15 @@ apply_ags() {
 
 apply_pywal() {
 	# generate pywal colors
-	python "$CONFIG_DIR"/scripts/color_generation/gen-materialwal.py "$STATE_DIR"/scss/_material.scss --output "$CONFIG_DIR"/scripts/templates/pywal/pywal.json
-	# apply pywal
-	wal -f "$CONFIG_DIR"/scripts/templates/pywal/pywal.json --cols16
+	python $CONFIG_DIR/scripts/color_generation/gen_materialwal.py # generate wal colors
+	wal -f $CONFIG_DIR/scripts/templates/pywal/pywal.json --cols16 # apply pywal
 	# apply other scripts
-	sh "$XDG_CONFIG_HOME"/hypr/scripts/gen-pywal
+	sh $XDG_CONFIG_HOME/hypr/scripts/gen-pywal
+}
+
+apply_qt() {
+	sh $CONFIG_DIR/scripts/kvantum/materialQT.sh          # generate kvantum theme
+	python $CONFIG_DIR/scripts/kvantum/changeAwdColors.py # apply config colors
 }
 
 colornames=$(cat "$STATE_DIR"/scss/_material.scss | cut -d: -f1)
@@ -186,8 +190,9 @@ colorvalues=($colorstrings) # Array of color values
 apply_ags &
 apply_hyprland &
 apply_hyprlock &
-apply_pywal &
 apply_lightdark &
 apply_gtk &
+apply_qt &
+apply_pywal &
 apply_fuzzel &
 apply_term &

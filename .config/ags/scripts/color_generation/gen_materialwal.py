@@ -1,5 +1,6 @@
 import json
 import re
+import os
 import argparse
 
 def parse_scss_file(file_path):
@@ -47,10 +48,9 @@ def scss_to_pywal(scss_file, output_file='pywal_colors.json'):
     print(f"Pywal colors have been saved to {output_file}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Convert SCSS colors to Pywal format')
-    parser.add_argument('scss_file', type=str, help='Path to the SCSS file')
-    parser.add_argument('--output', type=str, default='pywal_colors.json', help='Output file name (default: pywal_colors.json)')
-    args = parser.parse_args()
+    # Hardcode the file paths
+    scss_file = os.path.expanduser('~/.local/state/ags/scss/_material.scss')
+    output_file = os.path.expanduser('~/.config/ags/scripts/templates/pywal/pywal.json')
 
-    scss_to_pywal(args.scss_file, args.output)
+    scss_to_pywal(scss_file, output_file)
 
