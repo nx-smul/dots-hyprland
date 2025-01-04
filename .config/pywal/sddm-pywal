@@ -1,0 +1,28 @@
+#!/bin/bash
+
+sddm_theme_dir="/usr/share/sddm/themes/sequoia"
+get_wal="$(swww query | awk -F 'image: ' '{print $2}')"
+
+# Check if theme avilable or not
+if [[ ! -d $sddm_theme_dir ]]; then
+	echo "sddm theme sequoia not found. Please install theme Sequoia."
+	exit 1
+fi
+
+# copy walpaper to sddm theme sddm_theme_dir
+cp "$get_wal" "$sddm_theme_dir/backgrounds/wal.jpg"
+
+# change colors #
+# Source the colors.sh file
+source "$HOME/.cache/wal/colors.sh"
+
+# Path to the SDDM theme configuration file
+SDDM_THEME_CONFIG="$sddm_theme_dir/theme.conf"
+
+# Update the SDDM theme configuration with new colors
+sed -i "s/primaryColour=.*/primaryColour=\"$foreground\"/" "$SDDM_THEME_CONFIG"
+sed -i "s/popupsBackgroundColour=.*/popupsBackgroundColour=\"$color0\"/" "$SDDM_THEME_CONFIG"
+sed -i "s/popupsForegroundColour=.*/popupsForegroundColour=\"$foreground\"/" "$SDDM_THEME_CONFIG"
+sed -i "s/accentColour=.*/accentColour=\"$color1\"/" "$SDDM_THEME_CONFIG"
+
+echo "SDDM theme colors updated successfully!"

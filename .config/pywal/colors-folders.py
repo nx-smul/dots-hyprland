@@ -63,7 +63,7 @@ with open(color_path, "r") as file:
 color_names = [get_color_name(hex_code) for hex_code in hex_codes]
 
 # Get the name of the 4th color
-color_name = color_names[4]
+color_name = color_names[2]
 print(f"The 4th color is closest to: {color_name}")
 
 # Execute the papirus-folders command with the closest color name

@@ -50,7 +50,7 @@ def scss_to_pywal(scss_file, output_file='pywal_colors.json'):
 if __name__ == "__main__":
     # Hardcode the file paths
     scss_file = os.path.expanduser('~/.local/state/ags/scss/_material.scss')
-    output_file = os.path.expanduser('~/.config/ags/scripts/templates/pywal/pywal.json')
+    output_file = os.path.expanduser('~/.cache/ags/user/generated/pywal/pywal.json')
 
     scss_to_pywal(scss_file, output_file)
 

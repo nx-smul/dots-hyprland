@@ -19,9 +19,9 @@ colorstrings=''
 colorlist=()
 colorvalues=()
 
-# wallpath=$(swww query | head -1 | awk -F 'image: ' '{print $2}')
-# wallpath_png="$CACHE_DIR/user/generated/hypr/lockscreen.png"
-# convert "$wallpath" "$wallpath_png"
+wallpath=$(swww query | head -1 | awk -F 'image: ' '{print $2}')
+wallpath_png="$CACHE_DIR/user/generated/hypr/lockscreen.png"
+convert "$wallpath" "$wallpath_png"
 # wallpath_png=$(echo "$wallpath_png" | sed 's/\//\\\//g')
 # wallpath_png=$(sed 's/\//\\\\\//g' <<< "$wallpath_png")
 
@@ -114,7 +114,8 @@ apply_hyprlock() {
 	mkdir -p "$CACHE_DIR"/user/generated/hypr/
 	cp "scripts/templates/hypr/hyprlock.conf" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
 	# Apply colors
-	# sed -i "s/{{ SWWW_WALL }}/${wallpath_png}/g" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
+	sed -i "s|path = \$path|path = $wallpath_png|" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
+
 	for i in "${!colorlist[@]}"; do
 		sed -i "s/{{ ${colorlist[$i]} }}/${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
 	done
@@ -168,10 +169,11 @@ apply_ags() {
 
 apply_pywal() {
 	# generate pywal colors
+	mkdir -p "$CACHE_DIR"/user/generated/pywal
 	python "$CONFIG_DIR/scripts/color_generation/gen_materialwal.py" # generate wal colors
-	wal -f "$CONFIG_DIR/scripts/templates/pywal/pywal.json" --cols16 # apply pywal
+	wal -f "$CACHE_DIR/user/generated/pywal/pywal.json" --cols16     # apply pywal
 	# apply other scripts
-	sh "$XDG_CONFIG_HOME/hypr/scripts/gen-pywal"
+	sh "$XDG_CONFIG_HOME/pywal/gen-pywal"
 }
 
 apply_qt() {
