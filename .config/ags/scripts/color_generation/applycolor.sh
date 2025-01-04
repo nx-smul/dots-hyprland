@@ -168,15 +168,15 @@ apply_ags() {
 
 apply_pywal() {
 	# generate pywal colors
-	python $CONFIG_DIR/scripts/color_generation/gen_materialwal.py # generate wal colors
-	wal -f $CONFIG_DIR/scripts/templates/pywal/pywal.json --cols16 # apply pywal
+	python "$CONFIG_DIR/scripts/color_generation/gen_materialwal.py" # generate wal colors
+	wal -f "$CONFIG_DIR/scripts/templates/pywal/pywal.json" --cols16 # apply pywal
 	# apply other scripts
-	sh $XDG_CONFIG_HOME/hypr/scripts/gen-pywal
+	sh "$XDG_CONFIG_HOME/hypr/scripts/gen-pywal"
 }
 
 apply_qt() {
-	sh $CONFIG_DIR/scripts/kvantum/materialQT.sh          # generate kvantum theme
-	python $CONFIG_DIR/scripts/kvantum/changeAwdColors.py # apply config colors
+	sh "$CONFIG_DIR/scripts/kvantum/materialQT.sh"          # generate kvantum theme
+	python "$CONFIG_DIR/scripts/kvantum/changeAwdColors.py" # apply config colors
 }
 
 colornames=$(cat "$STATE_DIR"/scss/_material.scss | cut -d: -f1)
