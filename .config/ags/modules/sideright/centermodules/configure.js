@@ -171,8 +171,8 @@ export default (props) => {
                   .then(() => {
                     if (newValue) {
                       updateConfig("decoration:active_opacity", 0.85);
-                      updateConfig("decoration:inactive_opacity", 0.8);
-                    } else {
+                      updateConfig("decoration:inactive_opacity", 0.85);
+                      } else {
                       updateConfig("decoration:active_opacity", 1);
                       updateConfig("decoration:inactive_opacity", 1);
                     }
