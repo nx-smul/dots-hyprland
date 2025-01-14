@@ -10,9 +10,6 @@ GLYPH='󰏘'
 # echo -e "\n${GREEN}${GLYPH} Running colors-foot.py ${NC}"
 # python ~/.config/hypr/scripts/colors-foot.py
 
-echo -e "\n${GREEN}${GLYPH} Aplying hyprland colors (for window borders) ${NC}"
-python ~/.config/pywal/colors-hypr.py
-
 echo -e "\n${GREEN}${GLYPH} Running colors-folders.py (for papirus colored folders).${NC}"
 python ~/.config/pywal/colors-folders.py
 
@@ -33,9 +30,6 @@ echo -e "\n${GREEN}${GLYPH} Running walogram (for telegram) ${NC}"
 walogram -s
 
 echo -e "\n${GREEN}${GLYPH} Running pywal-discord (for discord) ${NC}"
-pywal-discord -p ~/.config/vesktop/themes/
-
-echo -e "\n${GREEN}${GLYPH} Running zed-theme (for Zed) ${NC}"
-~/.config/pywal/zed-theme
+pywal-discord
 
 echo -e "\n${GREEN}${GLYPH} Script execution completed.${NC}"
