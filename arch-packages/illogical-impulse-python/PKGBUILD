@@ -5,10 +5,14 @@ pkgdesc='Illogical Impulse Python Dependencies'
 arch=(any)
 license=(None)
 depends=(
-  python-build
-  python-pillow
+  uv
+  gtk4
+  libadwaita
+  libsoup3
+  libportal-gtk4
+  blueprint-compiler
+  gobject-introspection
+  sassc
   python-pywal16
-  python-setuptools-scm
-  python-wheel
   python-webcolors
 )

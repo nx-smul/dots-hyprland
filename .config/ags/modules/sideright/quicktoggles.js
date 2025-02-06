@@ -17,7 +17,7 @@ export const ToggleIconWifi = (props = {}) => Widget.Button({
     tooltipText: getString('Wifi | Right-click to configure'),
     onClicked: () => Network.toggleWifi(),
     onSecondaryClickRelease: () => {
-        execAsync(['bash', '-c', `${userOptions.apps.network}`]).catch(print);
+        execAsync(['bash', '-c', `nm-connection-editor`]).catch(print);
         closeEverything();
     },
     child: NetworkIndicator(),
@@ -210,6 +210,7 @@ export const ModuleRawInput = async (props = {}) => {
         return null;
     };
 }
+
 export const ModuleGameMode = async (props = {}) => {
     try {
         const Hyprland = (await import('resource:///com/github/Aylur/ags/service/hyprland.js')).default;
@@ -221,10 +222,10 @@ export const ModuleGameMode = async (props = {}) => {
                     .then((output) => {
                         const value = JSON.parse(output)["int"];
                         if (value == 1) {
-                            execAsync(['bash', '-c', `hyprctl --batch "keyword animations:enabled 0; keyword decoration:shadow:enabled 0; keyword decoration:blur:enabled 0; keyword general:gaps_in 0; keyword general:gaps_out 0; keyword general:border_size 1; keyword decoration:rounding 0" & hyprctl reload`]).catch(print);
+                            execAsync(['bash', '-c', `hyprctl --batch "keyword animations:enabled 0; keyword decoration:shadow:enabled 0; keyword decoration:blur:enabled 0; keyword general:gaps_in 0; keyword general:gaps_out 0; keyword general:border_size 1; keyword decoration:rounding 0; keyword general:allow_tearing 0" & hyprctl reload`]).catch(print);
                             button.toggleClassName('sidebar-button-active', false);
                         } else {
-                            execAsync(['bash', '-c', `hyprctl keyword animations:enabled 1 & hyprctl reload`]).catch(print);
+                            execAsync(['bash', '-c', `hyprctl --batch "keyword animations:enabled 1; keyword general:allow_tearing 1" & hyprctl reload`]).catch(print);
                             button.toggleClassName('sidebar-button-active', true);
                         }
                     })
@@ -237,6 +238,7 @@ export const ModuleGameMode = async (props = {}) => {
         return null;
     };
 }
+
 export const ModuleIdleInhibitor = (props = {}) => Widget.Button({ // TODO: Make this work
     attribute: {
         enabled: false,
