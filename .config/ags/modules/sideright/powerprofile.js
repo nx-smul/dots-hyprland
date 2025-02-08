@@ -1,7 +1,7 @@
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import { execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 import { MaterialIcon } from '../.commonwidgets/materialicon.js'; // Assuming MaterialIcon utility is already in place
-
+const { Box } = Widget;
 let activeButton = null; // Variable to track the active button
 
 // Function to fetch the current power profile
@@ -20,7 +20,7 @@ const createProfileButton = async (profileName, tooltipText, iconName, command) 
     
     const button = Widget.Button({
         className: 'txt-small sidebar-iconbutton',
-        tooltipText: getString(tooltipText),
+        tooltipText: getString(tooltipText), // Assuming getString is implemented elsewhere
         onClicked: (btn) => {
             execAsync(`powerprofilesctl set ${command}`).catch(print);
             btn.toggleClassName('sidebar-button-active', true);
@@ -33,7 +33,7 @@ const createProfileButton = async (profileName, tooltipText, iconName, command) 
             // Update the active button reference
             activeButton = btn;
         },
-        child: MaterialIcon(iconName, 'norm'),
+        child: MaterialIcon(iconName, 'norm'), // Assuming MaterialIcon returns Pixbuf or string
     });
 
     // Set the button as active if it matches the current profile
@@ -62,22 +62,16 @@ export const PerformanceProfile = async (props = {}) => {
 
 // Title for Power Profile with Icon
 export const PowerProfileTitle = async () => {
-    // Creating the icon and label together
-    const icon = MaterialIcon('settings_power', 'norm'); // Icon before the title
-    const label = Widget.Label({
-        label: getString('Set Power Profile:'),
-        className: 'txt-medium power-profile-title', // You can customize this class for styling
-        halign: 'center',
-    });
-
-    // Creating a Box to hold both icon and label side by side
     return Widget.Box({
-        className: 'power-profile-title-box', // Custom class for layout
+        className: 'spacing-h-10 txt',
         children: [
-            icon,
-            label,
+            MaterialIcon('settings_power', 'norm'),
+            Widget.Label({
+                label: getString('Set Power Profile:'), // Assuming getString is implemented elsewhere
+                className: 'txt-medium txt', // You can customize this class for styling
+                halign: 'center',
+            }),
         ],
-        spacing: 5, // Adjust spacing between the icon and the label
     });
 };
 
@@ -90,19 +84,16 @@ async function createPowerBox() {
             return null;  // If powerprofilesctl is not available, return null
         }
 
-        // Create the power profile title box
-        const powerTitle = Widget.Box({
-            className: 'spacing-h-5 txt-medium power-box-title',
-            hpack: 'start',  // Align title to the left
+        const powerTitle = Box({
+            className: 'spacing-h-5 txt-medium sidebar-group-invisible-morehorizpad',
             children: [
-                await PowerProfileTitle(), // Power profile title with icon and label
+                await PowerProfileTitle(),
             ],
         });
 
         // Create the power profile button box
-        const powerBox = Widget.Box({
-            className: 'spacing-h-5 txt-medium power-box-title',
-            hpack: 'end',  // Align buttons to the right
+        const powerBox = Box({
+            className: 'spacing-h-5 txt-medium',
             children: [
                 Widget.Box({
                     hpack: 'center',
@@ -117,14 +108,13 @@ async function createPowerBox() {
         });
 
         // Create a parent box to hold both title and power box side by side and stretch across the full width
-        const powerModule = Widget.Box({
-            className: 'power-module-box',  // Custom class for the outer container
+        const powerModule = Box({
+            className: 'spacing-h-10 power-module',
             children: [
-                powerTitle,  // Title on the left
-                powerBox,    // Power options on the right
+                powerTitle,
+                Widget.Box({ hexpand: true }),
+                powerBox,
             ],
-            hpack: 'center',  // Make the parent container expand to fill the width
-            spacing: 130, // Remove any spacing between elements
         });
 
         // Return the entire module with title and power box in a single layout

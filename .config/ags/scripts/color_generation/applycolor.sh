@@ -115,7 +115,6 @@ apply_hyprlock() {
   cp "scripts/templates/hypr/hyprlock.conf" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
   # Apply colors
   sed -i "s|path = \$path|path = $wallpath_png|" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
-
   for i in "${!colorlist[@]}"; do
     sed -i "s/{{ ${colorlist[$i]} }}/${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/hypr/hyprlock.conf
   done
@@ -150,7 +149,9 @@ apply_gtk() { # Using gradience-cli
   done
 
   mkdir -p "$XDG_CONFIG_HOME/presets" # create gradience presets folder
-  $(eval echo $ILLOGICAL_IMPULSE_VIRTUAL_ENV)/bin/gradience-cli apply -p "$CACHE_DIR"/user/generated/gradience/preset.json --gtk both
+  source $(eval echo $ILLOGICAL_IMPULSE_VIRTUAL_ENV)/bin/activate
+  gradience-cli apply -p "$CACHE_DIR"/user/generated/gradience/preset.json --gtk both
+  deactivate
 
   # And set GTK theme manually as Gradience defaults to light adw-gtk3
   # (which is unreadable when broken when you use dark mode)
