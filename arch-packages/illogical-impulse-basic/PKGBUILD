@@ -22,4 +22,5 @@ depends=(
   typescript
   gjs
   xdg-user-dirs
+  nwg-displays
 )

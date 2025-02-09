@@ -16,7 +16,7 @@ export const ToggleIconWifi = (props = {}) => Widget.Button({
     tooltipText: getString('Wifi | Right-click to configure'),
     onClicked: () => Network.toggleWifi(),
     onSecondaryClickRelease: () => {
-        execAsync(['bash', '-c', `${userOptions.apps.network}`]).catch(print);
+        execAsync(['bash', '-c', `nm-connection-editor`]).catch(print);
         closeEverything();
     },
     child: NetworkIndicator(),

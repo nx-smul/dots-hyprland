@@ -19,6 +19,7 @@ depends=(
   fish
   foot
   starship
+  nwg-look
   kvantum
   kvantum-qt5
   papirus-folders
