@@ -8,16 +8,16 @@ configuration {
 
 * {
     background-color:       transparent;
-    background:             #171B20;
-    background-transparent: #101418F0;
-    text-color:             #E1E2E8;
-    primary:                #A0CAFD;
-    secondary:              #BAC7DB;
+    background:             #151B1E;
+    background-transparent: #0F1416F0;
+    text-color:             #DEE3E6;
+    primary:                #86D1E8;
+    secondary:              #B2CAD3;
     urgent:                 #FFB4AB;
-    onPrimary:              #003258;
-    onSecondary:            #253140;
-    primaryContainer:       #184975;
-    onPrimaryContainer:     #D1E4FF;
-    secondaryContainer:     #3B4858;
-    onSecondaryContainer:   #D6E3F7;
+    onPrimary:              #003641;
+    onSecondary:            #1D343A;
+    primaryContainer:       #004E5E;
+    onPrimaryContainer:     #B0ECFF;
+    secondaryContainer:     #364C54;
+    onSecondaryContainer:   #CEE7EF;
 }

@@ -23,4 +23,5 @@ depends=(
   gjs
   xdg-user-dirs
   nwg-displays
+  udiskie
 )

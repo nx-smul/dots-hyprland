@@ -7,6 +7,22 @@ SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 GAME_LAUNCHER_CACHE="$HOME/.cache/rofi-game-launcher"
 APP_PATH="$HOME/.local/share/applications/rofi-game-launcher"
 
+# Check if python-vdf is installed by attempting to import it in Python
+check_python_vdf() {
+  python3 -c "import vdf" &>/dev/null
+  if [ $? -ne 0 ]; then
+    if [ -t 1 ]; then
+      # If running in a terminal, print the message
+      echo "python-vdf package not found. Please install it using your package manager"
+    else
+      # If not running in a terminal, show a notification
+      notify-send "Steam Game Launcher" "python-vdf package not found. Please install it using your package manager"
+    fi
+    exit 1 # Exit the script if python-vdf is not installed
+  fi
+}
+
+# Function to open launcher
 launcher-open() {
   # Update entries in the background
   "$SCRIPT_DIR/update-entries.sh" -q &
@@ -32,11 +48,17 @@ launcher-open() {
   sed -i -e 's/^1/0/' "$GAME_LAUNCHER_CACHE/rofi3.druncache"
 }
 
+# Get workspace width
 workspace-width() {
   hyprctl monitors -j | jq '.[] | select(.focused == true) | .width'
 }
 
+# Set environment variables for Rofi
 export ROFI_GAME_LAUNCHER_N_ENTRIES=$(($(workspace-width) / 220))
 export ROFI_GAME_LAUNCHER_HEIGHT=360
 
+# Check if python-vdf is installed before proceeding
+check_python_vdf
+
+# Open the launcher
 launcher-open

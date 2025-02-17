@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")"
 source ./scriptdata/environment-variables
+source ./scriptdata/functions
+prevent_sudo_or_root
 
 function v() {
   echo -e "[$0]: \e[32mNow executing:\e[0m"
@@ -24,7 +26,9 @@ printf '\e[36mRemoving copied config and local folders...\n\e[97m'
 for i in ags fish fontconfig foot fuzzel hypr mpv wlogout "starship.toml" rubyshot
   do v rm -rf "$XDG_CONFIG_HOME/$i"
 done
-
+for i in "glib-2.0/schemas/com.github.GradienceTeam.Gradience.Devel.gschema.xml" "gradience"
+  do v rm -rf "$XDG_DATA_HOME/$i"
+done
 v rm -rf "$XDG_BIN_HOME/fuzzel-emoji"
 v rm -rf "$XDG_CACHE_HOME/ags"
 v sudo rm -rf "$XDG_STATE_HOME/ags"
